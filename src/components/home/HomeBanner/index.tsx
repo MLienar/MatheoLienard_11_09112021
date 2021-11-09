@@ -1,5 +1,5 @@
 import { Component } from "react";
-import BannerImgFile from '../../assets/img/img-home.png'
+import BannerImgFile from '../../../assets/img/img-home.png'
 import styled from 'styled-components'
 
 const Banner = styled.div`

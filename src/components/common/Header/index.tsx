@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom"
 import styled from 'styled-components'
-import Logo from '../../assets/img/logo.svg'
+import Logo from '../../../assets/img/logo.svg'
 
 const MyHeader = styled.header`
     display: flex;

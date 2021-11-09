@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './index.css';
-import Header from './components/Header'
+import Header from './components/common/Header'
+import Footer from './components/common/Footer'
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -19,6 +20,7 @@ ReactDOM.render(
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Error />} />
         </Routes>
+        <Footer />
     </Router>
   
   </React.StrictMode>,

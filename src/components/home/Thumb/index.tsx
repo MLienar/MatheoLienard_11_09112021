@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { House } from '../../utils/Interfaces'
+import { House } from '../../../utils/Interfaces'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
