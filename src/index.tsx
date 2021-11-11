@@ -8,6 +8,7 @@ import Footer from './components/common/Footer'
 
 import Home from './pages/Home';
 import About from './pages/About';
+import House from './pages/House'
 import Error from './pages/Error';
 
 
@@ -16,13 +17,18 @@ ReactDOM.render(
     <Router>
       <Header/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          
           <Route path="/about" element={<About />} />
+          <Route 
+          path="/house/:id" 
+          element={<House />}
+           />
+           <Route path="/" element={<Home />} />
           <Route path="*" element={<Error />} />
+          
         </Routes>
         <Footer />
     </Router>
-  
   </React.StrictMode>,
   document.getElementById('root')
 );

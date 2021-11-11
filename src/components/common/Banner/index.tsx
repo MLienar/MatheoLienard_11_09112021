@@ -1,5 +1,4 @@
 import { Component } from "react";
-import BannerImgFile from '../../../assets/img/img-home.png'
 import styled from 'styled-components'
 
 const Banner = styled.div`
@@ -36,12 +35,19 @@ const BannerTitle = styled.h1`
     color: white;
 `
 
-class HomeBanner extends Component {
-    render() {
+interface BannerProps {
+    bannerText?: string,
+    bannerImg: string
+}
+
+class HomeBanner extends Component <BannerProps>{
+    render() {        
+        const bannerText = this.props.bannerText
+        const bannerImgFile = this.props.bannerImg
         return (
             <Banner>
-                <BannerImg src={ BannerImgFile }/>
-                <BannerTitle>Chez vous, partout et ailleurs</BannerTitle>
+                <BannerImg src={ bannerImgFile }/>
+                <BannerTitle>{ bannerText }</BannerTitle> 
             </Banner>
 
         )

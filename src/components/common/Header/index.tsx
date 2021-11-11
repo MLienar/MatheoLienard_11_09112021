@@ -24,7 +24,7 @@ const NavLinks = styled(Link)`
 `
     
 const AppLogo = styled.img`
-    width: clamp(120px, 10vw, 240px);
+    width: clamp(120px, 10vw, 200px);
 	height: auto;
 `
 

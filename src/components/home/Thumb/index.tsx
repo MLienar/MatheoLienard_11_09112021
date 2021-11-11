@@ -49,7 +49,7 @@ class Thumb extends Component<Props, State> {
     render() {
         const house = this.props.house
         return(
-            <Thumbnail to="/">
+            <Thumbnail key={`house-${house.id}`} to={`/house/${house.id}`}>
                 <Picture src={house.pictures[0]} alt={house.title + 'poto'} />
                 <Title>{house.title}</Title>
             </Thumbnail>
