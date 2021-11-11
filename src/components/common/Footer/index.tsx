@@ -12,6 +12,7 @@ const FooterDiv = styled.footer`
     justify-content: center;
     flex-flow: column nowrap;
     color: white;
+
 `
 
 const FooterLogo = styled.img`

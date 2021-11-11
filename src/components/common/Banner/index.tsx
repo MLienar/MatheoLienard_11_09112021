@@ -1,7 +1,7 @@
 import { Component } from "react";
 import styled from 'styled-components'
 
-const Banner = styled.div`
+const BannerBlock = styled.div`
     width: 100%;
     border-radius: 10px;
     margin-bottom: 2.5vh;  
@@ -40,19 +40,19 @@ interface BannerProps {
     bannerImg: string
 }
 
-class HomeBanner extends Component <BannerProps>{
+class Banner extends Component <BannerProps>{
     render() {        
         const bannerText = this.props.bannerText
         const bannerImgFile = this.props.bannerImg
         return (
-            <Banner>
+            <BannerBlock>
                 <BannerImg src={ bannerImgFile }/>
                 <BannerTitle>{ bannerText }</BannerTitle> 
-            </Banner>
+            </BannerBlock>
 
         )
     }
 }
 
-export default HomeBanner
+export default Banner
 

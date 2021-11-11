@@ -21,7 +21,7 @@ ReactDOM.render(
           <Route path="/about" element={<About />} />
           <Route 
           path="/house/:id" 
-          element={<House />}
+          element={<House houseId="b9123946" />}
            />
            <Route path="/" element={<Home />} />
           <Route path="*" element={<Error />} />

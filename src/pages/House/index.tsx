@@ -1,9 +1,34 @@
 import { Component } from "react";
-// import {RouteComponentProps} from 'react-router-dom';
 
+import { House } from '../../utils/Interfaces'
 
-class House extends Component {
-   
+interface Props {
+    houseId?: string
+}
+
+interface State {
+    house: House
+}
+
+class HouseSheet extends Component<Props, State> {
+
+    componentDidMount() {
+        const fetchData = async () => {
+          try  {
+              const data = await fetch("projects/Front-End+V2/P9+React+1/logements.json")
+              const list = await data.json()
+              for (const house of list) {
+                  if (house.id === this.props.houseId) {
+                    console.log(house);
+                    
+                  }
+              }
+          } catch (err) {
+              console.log(err);
+          }
+        }
+        fetchData()
+    }   
 
     render() {
         return (
@@ -12,4 +37,4 @@ class House extends Component {
     }
 }
 
-export default House
+export default HouseSheet
