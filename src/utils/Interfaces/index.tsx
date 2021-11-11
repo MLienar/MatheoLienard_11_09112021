@@ -10,7 +10,7 @@ export interface House {
     pictures: string[],
     description: string,
     host: Host,
-    rating: string,
+    rating: number,
     location: string,
     equipments: string[],
     tags: string[]

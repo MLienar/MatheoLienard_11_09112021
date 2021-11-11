@@ -48,7 +48,7 @@ class HouseSheet extends Component<Props, State> {
                     name:"",
                     picture:""
                 },
-                rating: "",
+                rating: 0,
                 location: "",
                 equipments: [],
                 tags: []
@@ -75,6 +75,7 @@ class HouseSheet extends Component<Props, State> {
 
     render() {
             const house = this.state.house
+            
             return (
             <HouseContainer className="main-wrapper">
                 <Carousel photos={house.pictures} />
@@ -84,9 +85,14 @@ class HouseSheet extends Component<Props, State> {
                 </ElemLine>
                 <ElemLine>
                     <ElemContainer>
-                        { house.tags.map((tag) => {
-                            return <Tag tag={tag} />
+                        { house.tags.map((tag, i) => {
+                            return <Tag tag={tag} key={i} />
                         }) }
+                    </ElemContainer>
+                    <ElemContainer>
+                        {Array.from({length: house.rating }, (_, i) => <Star color="orange" key={i} />)}
+                        {Array.from({length: 5- house.rating }, (_, i) => <Star color="grey" key={i} />)}
+                        
                     </ElemContainer>
                 </ElemLine>
             </HouseContainer>
