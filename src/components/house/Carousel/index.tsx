@@ -1,4 +1,8 @@
 import { Component } from "react";
+import CarouselArrow from "../Carousel/CarouselArrow"
+import styled from "styled-components"
+import CarouselImg from '../Carousel/CarouselImg'
+
 
 interface Props {
     photos: string[]
@@ -7,6 +11,16 @@ interface Props {
 interface State {
     index: number
 }
+
+const CarouselContainer = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    height: clamp(200px, 35vh, 550px);
+    border-radius: 10px;
+    overflow: hidden;
+`
 
 class Carousel extends Component<Props, State> {
     constructor(props: Props) {
@@ -19,7 +33,6 @@ class Carousel extends Component<Props, State> {
     indexChange(operator:string) {
         const length = this.props.photos.length
         let newIndex
-        console.log(length);
         
         operator === "plus" ? newIndex = this.state.index + 1 : newIndex = this.state.index - 1 
         if (newIndex < 0) {
@@ -34,12 +47,13 @@ class Carousel extends Component<Props, State> {
     render() {
         const pictures = this.props.photos
         const index = this.state.index
-        // console.log(index);
         
         return(
-            <div>
-                <img src={ pictures[index] } alt="" onClick={() => this.indexChange("plus") }/>
-            </div>
+            <CarouselContainer>
+                <CarouselArrow  indexChange={() => this.indexChange("minus") } />
+                <CarouselImg url={ pictures[index] }/>
+                <CarouselArrow indexChange={() => this.indexChange("plus") } />
+            </CarouselContainer>
             
         )
     }

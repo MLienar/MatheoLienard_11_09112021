@@ -65,6 +65,15 @@ table {
 	width: clamp(500px, 90%, 1200px);
 }
 
+.carrousel-arrow:first-child {
+	left: 2%;
+}
+
+.carrousel-arrow:last-child {
+	right: 2%;
+	transform: rotate(180deg) translateY(50%);
+}
+
 @media screen and (max-width: 600px) {
 	.main-wrapper {
 		width: 90vw;
