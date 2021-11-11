@@ -11,6 +11,7 @@ const HouseTitle = styled.div`
     flex-flow: column nowrap;
     justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 1vh;
 `
 
 const Name = styled.h1`

@@ -20,6 +20,7 @@ const CarouselContainer = styled.div`
     height: clamp(200px, 35vh, 550px);
     border-radius: 10px;
     overflow: hidden;
+    margin-bottom: 4vh;
 `
 
 class Carousel extends Component<Props, State> {

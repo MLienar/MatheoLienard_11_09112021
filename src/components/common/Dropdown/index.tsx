@@ -6,7 +6,7 @@ import DropdownArrow from "./DropdownArrow"
 interface DropdownProps {
     title: string, 
     details?: string,
-    list?: [],
+    list?: string[],
 }
 
 interface DropdownState {
@@ -53,13 +53,19 @@ const DropdownAnimation = keyframes`
 
 const DropdownContent = styled.div`
     background: #F6F6F6;
-    padding: 25px 20px 20px;
+    padding: 35px 20px 30px;
     color: var(--orange);
     transform: translateY(-5px);
     animation: ${DropdownAnimation} 0.2s ease-in-out;
 `
 
+const DropdownText = styled.p`
+    line-height: 25px;
+`
 
+const DropdownListItem = styled.li`
+    margin: 10px 0;
+`
 
 class Dropdown extends Component<DropdownProps, DropdownState> {
     state = {
@@ -82,11 +88,11 @@ class Dropdown extends Component<DropdownProps, DropdownState> {
 
         list ? 
         ( content = <ul>
-                    {list.map((listitem) => {
-                        return (<li>listitem</li>)
+                    {list.map((listitem, i) => {
+                        return (<DropdownListItem key={i}>{listitem}</DropdownListItem>)
                     }) }
                     </ul>) :
-        ( content = <p>{ details }</p> ) 
+        ( content = <DropdownText>{ details }</DropdownText> ) 
         
         return (
             <DropdownContainer>

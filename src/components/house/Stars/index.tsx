@@ -7,7 +7,8 @@ interface Props {
 }
 
 const Icon = styled.img<Props>`
-    height: clamp(20px, 4vh, 35px);
+    height: clamp(15px, 1.8vw, 25px);
+    margin-left: 5px;
     width: auto;
     filter: ${props => props.color === "orange" ? "unset" : "saturate(0) brightness(160%)"}
 `

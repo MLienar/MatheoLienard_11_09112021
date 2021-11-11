@@ -17,8 +17,8 @@ const OwnerDiv = styled.div`
 `
 
 const OwnerPhoto = styled.img`
-    width: clamp(50px, 5vw, 100px);
-    height: clamp(50px, 5vw, 10 0px);
+    width: clamp(70px, 5vw, 100px);
+    height: clamp(70px, 5vw, 10 0px);
     margin-left: 20px;
     border-radius: 200px;
     overflow: hidden;
@@ -29,6 +29,7 @@ const OwnerName = styled.p`
     width: 50px;
     text-align: right;
     line-height: 24px;
+    margin-left: 50px;
 `
     
 
