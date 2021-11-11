@@ -39,7 +39,7 @@ class ThumbGrid extends Component<IProps, IState>  {
     componentDidMount() {
         const fetchData = async () => {
           try  {
-              const data = await fetch("projects/Front-End+V2/P9+React+1/logements.json")
+              const data = await fetch("/projects/Front-End+V2/P9+React+1/logements.json")
               const list = await data.json()
               console.log(list);
               

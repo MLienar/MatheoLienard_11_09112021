@@ -15,7 +15,6 @@ const ArrowImg = styled.img<Props>`
 class DropdownArrow extends Component<Props>{
     
     render() {
-        console.log(this.props.open)
         return (
             <ArrowImg src={ Arrow } alt="arrow" open={ this.props.open }/>
         )
