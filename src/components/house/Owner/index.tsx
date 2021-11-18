@@ -26,7 +26,7 @@ const OwnerPhoto = styled.img`
 `
 
 const OwnerName = styled.p`
-    width: 50px;
+    width: 75px;
     text-align: right;
     line-height: 24px;
     margin-left: 50px;

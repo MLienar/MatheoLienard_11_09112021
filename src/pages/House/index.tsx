@@ -8,12 +8,13 @@ import Tag from "../../components/house/Tags"
 import Star from "../../components/house/Stars"
 import Dropdown from "../../components/common/Dropdown"
 
-interface Props {
-    houseId?: string
+interface Props {
+
 }
 
 interface State {
-    house: House
+    house: House,
+    houseId: string
 }
 
 const HouseContainer = styled.div`
@@ -103,7 +104,8 @@ class HouseSheet extends Component<Props, State> {
                 location: "",
                 equipments: [],
                 tags: []
-            }
+            },
+            houseId: "",
         }
     }
 
@@ -112,9 +114,12 @@ class HouseSheet extends Component<Props, State> {
           try  {
               const data = await fetch("../projects/Front-End+V2/P9+React+1/logements.json")
               const list = await data.json()
+              const url:string = document.location.href
+              const slashIndex:number = url.lastIndexOf("/")
+              const urlParam:string = url.substring(slashIndex + 1) 
               for (const house of list) {
-                  if (house.id === this.props.houseId) {
-                    this.setState({ house: house})
+                  if (house.id === urlParam) {
+                    this.setState({ house})
                   }
               }
           } catch (err) {

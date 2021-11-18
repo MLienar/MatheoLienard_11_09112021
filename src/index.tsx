@@ -11,7 +11,6 @@ import About from './pages/About';
 import House from './pages/House'
 import Error from './pages/Error';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -21,9 +20,9 @@ ReactDOM.render(
           <Route path="/about" element={<About />} />
           <Route 
           path="/house/:id" 
-          element={<House houseId="b9123946" />}
+          element={<House />}
            />
-           <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="*" element={<Error />} />
           
         </Routes>
