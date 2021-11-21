@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { House } from '../../utils/Interfaces'
 import Carousel from "../../components/house/Carousel"
@@ -14,7 +15,8 @@ interface Props {
 
 interface State {
     house: House,
-    houseId: string
+    houseId: string,
+    redirect: boolean
 }
 
 const HouseContainer = styled.div`
@@ -106,6 +108,7 @@ class HouseSheet extends Component<Props, State> {
                 tags: []
             },
             houseId: "",
+            redirect: false
         }
     }
 
@@ -117,10 +120,15 @@ class HouseSheet extends Component<Props, State> {
               const url:string = document.location.href
               const slashIndex:number = url.lastIndexOf("/")
               const urlParam:string = url.substring(slashIndex + 1) 
+              let houseExists = false
               for (const house of list) {
                   if (house.id === urlParam) {
                     this.setState({ house})
+                    houseExists = true
                   }
+              }
+              if(!houseExists){ 
+             this.setState({redirect: true})
               }
           } catch (err) {
               console.log(err);
@@ -131,7 +139,9 @@ class HouseSheet extends Component<Props, State> {
 
     render() {
             const house = this.state.house
-            
+            if (this.state.redirect) {
+                return <Navigate to='/error' />
+            }
             return (
             <HouseContainer className="main-wrapper">
                 <Carousel photos={house.pictures} />
