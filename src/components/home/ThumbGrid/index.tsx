@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { House } from '../../../utils/Interfaces'
 import Thumb from '../Thumb'
-import styled from 'styled-components'
 
 type IProps = {
 }
@@ -10,24 +9,7 @@ type IState = {
   houseList: House[];
 }
 
-const ThumbsGrid = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 40px;
-    padding: 40px;
-    background: var(--gris);
-    border-radius: 10px;
-    @media screen and (max-width: 950px) {
-        grid-template-columns: 1fr 1fr;
-    }
-    @media screen and (max-width: 600px) {
-        display: flex;
-        flex-flow: column nowrap;
-        padding: 5vw;
-        gap: 5vw;
-    }
-`
-    
+
 class ThumbGrid extends Component<IProps, IState>  {
     constructor(props: any) {
         super(props)
@@ -59,9 +41,9 @@ class ThumbGrid extends Component<IProps, IState>  {
         )
 
         return (
-            <ThumbsGrid>
+            <div className="thumbsGrid">
                 { housesDOM }
-            </ThumbsGrid>
+            </div>
         )
     }
 }

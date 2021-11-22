@@ -1,5 +1,4 @@
 import { Component } from "react";
-import styled, { keyframes }  from 'styled-components' 
 
 import DropdownArrow from "./DropdownArrow"
 
@@ -13,59 +12,6 @@ interface DropdownState {
     open: boolean,
 }
 
-const DropdownContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    margin-top: 3vh;
-    @media screen and (max-width: 550px) {
-        width: 100%;
-    }
-`
-    
-const DropdownTitle = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background: var(--orange);
-    width: 100%;
-    color: white;
-    z-index: 2;
-    cursor: pointer;
-`
-
-const DropdownTitleText = styled.h2`
-    font-size: clamp(16px, 1rem + 0.6vw, 23px);
-    font-weight: 500;
-`
-
-const DropdownAnimation = keyframes`
-    from {
-        opacity: 0;
-        transform: translateY(-50px)
-    } to {
-        opacity: 1;
-        transform: translateY(-5px);
-    }
-`
-
-const DropdownContent = styled.div`
-    background: #F6F6F6;
-    padding: 35px 20px 30px;
-    color: var(--orange);
-    transform: translateY(-5px);
-    animation: ${DropdownAnimation} 0.2s ease-in-out;
-`
-
-const DropdownText = styled.p`
-    line-height: 25px;
-`
-
-const DropdownListItem = styled.li`
-    margin: 10px 0;
-`
 
 class Dropdown extends Component<DropdownProps, DropdownState> {
     state = {
@@ -89,23 +35,24 @@ class Dropdown extends Component<DropdownProps, DropdownState> {
         list ? 
         ( content = <ul>
                     {list.map((listitem, i) => {
-                        return (<DropdownListItem key={i}>{listitem}</DropdownListItem>)
+                        return (<li className="DropdownListItem" key={i}>{listitem}</li>)
                     }) }
                     </ul>) :
-        ( content = <DropdownText>{ details }</DropdownText> ) 
+        ( content = <p className="DropdownText">{ details }</p> ) 
         
         return (
-            <DropdownContainer>
-                <DropdownTitle onClick={this.toggleDropdown}>
-                    <DropdownTitleText>{ title }</DropdownTitleText>
-                    <DropdownArrow open={ this.state.open } />
-                </DropdownTitle>
+            <div className="dropdownContainer">
+                <div className="dropdownTitle" onClick={this.toggleDropdown}>
+                    <h2 className="dropdownTitleText">{ title }</h2>
+                    { this.state.open ? (<DropdownArrow className="open arrowImg"/>):(<DropdownArrow className="arrowImg"/>)}
+                    
+                </div>
                 { this.state.open && (
-                    <DropdownContent>
+                    <div className="dropdownContent">
                      { content }
-                    </DropdownContent>
+                    </div>
                 )}    
-            </DropdownContainer>
+            </div>
         )
     }
 }

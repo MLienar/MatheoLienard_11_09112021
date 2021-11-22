@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Navigate } from "react-router-dom";
-import styled from "styled-components";
 import { House } from '../../utils/Interfaces'
 import Carousel from "../../components/house/Carousel"
 import HouseName from "../../components/house/HouseName"
@@ -18,75 +17,6 @@ interface State {
     houseId: string,
     redirect: boolean
 }
-
-const HouseContainer = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    min-height: 65vh;
-`
-
-const HouseDetails = styled.div`
-    display: flex;        
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    @media screen and (max-width: 780px) {
-        flex-flow: column nowrap;
-    }
-`
-
-const ElemColumn = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    color: var(--orange);
-`
-
-const RightColumn = styled(ElemColumn)`
-    align-items: flex-end;
-    @media screen and (max-width: 780px) {
-        flex-flow: row-reverse nowrap;
-        align-items: center;
-        margin: 2vh 0;
-    }
-`
-
-const LeftColumn = styled(ElemColumn)`
-    align-items: flex-start;
-`
-
-
-const ElemContainer = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-`
-
-const StarsContainer = styled(ElemContainer)`
-    margin-top: 1vh;
-`
-
-const TagsContainer = styled(ElemContainer)`
-    @media screen and (max-width: 780px) {
-        flex-flow: row wrap;
-    }
-`
-
-const DropDownsContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    @media screen and (max-width: 780px) {
-        flex-flow: column nowrap;
-    }
-`
-
-const DropDownContainer = styled.div`
-    width: 47%;
-    @media screen and (max-width: 780px) {
-        width: 100%;
-    }
-`
-
 
 class HouseSheet extends Component<Props, State> {
     constructor(props: Props) {
@@ -143,35 +73,35 @@ class HouseSheet extends Component<Props, State> {
                 return <Navigate to='/error' />
             }
             return (
-            <HouseContainer className="main-wrapper">
+            <div className="houseContainer main-wrapper">
                 <Carousel photos={house.pictures} />
-                <HouseDetails>
-                    <LeftColumn>
+                <div className="houseDetails">
+                    <div className="elemColumn leftColumn">
                         <HouseName title={house.title} subtitle={house.location} />
-                        <TagsContainer>
+                        <div className="tagsContainer elemContainer">
                             { house.tags.map((tag, i) => {
                                 return <Tag tag={tag} key={i} />
                             }) }
-                        </TagsContainer>
-                    </LeftColumn>
-                    <RightColumn>
+                        </div>
+                    </div>
+                    <div className="elemColumn rightColumn">
                         <Owner host={house.host}></Owner>
-                        <StarsContainer>
-                            {Array.from({length: house.rating }, (_, i) => <Star color="orange" key={i} />)}
-                            {Array.from({length: 5- house.rating }, (_, i) => <Star color="grey" key={i} />)} 
-                        </StarsContainer>
-                    </RightColumn>
-                </HouseDetails>
+                        <div className="elemContainer starsContainer">
+                            {Array.from({length: house.rating }, (_, i) => <Star className="icon" key={i} />)}
+                            {Array.from({length: 5- house.rating }, (_, i) => <Star className="iconGrey icon" key={i} />)} 
+                        </div>
+                    </div>
+                </div>
 
-                <DropDownsContainer>
-                    <DropDownContainer>
+                <div className="dropDownsContainer">
+                    <div className="dropDownContainer">
                         <Dropdown title="Description" details={house.description} />
-                    </DropDownContainer>   
-                    <DropDownContainer>
+                    </div>   
+                    <div className="dropDownContainer">
                         <Dropdown title="Equipement" list={house.equipments} />
-                    </DropDownContainer>   
-                </DropDownsContainer>
-            </HouseContainer>
+                    </div>   
+                </div>
+            </div>
             )
 
     }

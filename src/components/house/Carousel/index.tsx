@@ -1,6 +1,5 @@
 import { Component } from "react";
 import CarouselArrow from "../Carousel/CarouselArrow"
-import styled from "styled-components"
 import CarouselImg from '../Carousel/CarouselImg'
 
 
@@ -12,16 +11,6 @@ interface State {
     index: number
 }
 
-const CarouselContainer = styled.div`
-    display: flex;
-    width: 100%;
-    align-items: center;
-    position: relative;
-    height: clamp(200px, 35vh, 550px);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 4vh;
-`
 
 class Carousel extends Component<Props, State> {
     constructor(props: Props) {
@@ -50,11 +39,11 @@ class Carousel extends Component<Props, State> {
         const index = this.state.index
         
         return(
-            <CarouselContainer>
+            <div className="carouselContainer">
                 <CarouselArrow  indexChange={() => this.indexChange("minus") } />
                 <CarouselImg url={ pictures[index] }/>
                 <CarouselArrow indexChange={() => this.indexChange("plus") } />
-            </CarouselContainer>
+            </div>
             
         )
     }
